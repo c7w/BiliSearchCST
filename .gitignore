@@ -1,2 +1,4 @@
 Crawler/webdriver/chromedriver.exe
 __pycache__
+Crawler/Result/CrawlResult
+Crawler/Result/UpResult
