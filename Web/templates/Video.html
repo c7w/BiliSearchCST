@@ -1,0 +1,128 @@
+{% extends 'Base.html' %} {% load static %} {% block main %}
+<div class="video">
+  <div class="content-container">
+    <div class="video-container">
+      <div class="video-header">
+        <a class="back" href="/videoList">< 返回视频列表</a>
+        <div style="flex-grow: 1"></div>
+        <a class="front" href="https://www.bilibili.com/video/av{{video.id}}"
+          >前往原视频链接 ></a
+        >
+      </div>
+
+      <p class="title">{{video.title}}</p>
+      <p style="margin-top: 0.2rem; color: grey; font-size: 12px">
+        {{video.uploadTime}}
+      </p>
+      <iframe
+        src="https://player.bilibili.com/player.html?aid={{video.id}}"
+        scrolling="no"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true"
+        id="PlayVideo"
+      >
+      </iframe>
+      <hr />
+      <p class="abstract">{{video.abstract}}</p>
+    </div>
+    <div class="info-container">
+      <div class="up-container">
+        <a style="margin: 0 auto;" href="/up/{{up.id}}"><img
+          src="{{up.avatarUrl}}"
+          width="128"
+          height="128"
+          style="
+            border-radius: 100%;
+            border-width: 1px;
+            border-color: blue;
+            border-style: solid;
+          "
+        /></a>
+        <table style="text-align: center">
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+          <tr>
+            <td colspan="2" style="line-height: 1.8rem; font-weight:bold;">{{up.username}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bolt"></i> &nbsp;等级</td>
+            <td>Lv. {{up.level}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-headphones"></i> 粉丝数</td>
+            <td>{{up.followerCount}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-eye"></i> 关注数</td>
+            <td>{{up.followingCount}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="feedback-container">
+        <table style="text-align: center">
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-play"></i> 总播放量</td>
+            <td>{{video.playCount}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-comment"></i> 评论数</td>
+            <td>{{video.commentCount}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bell"></i> 弹幕数</td>
+            <td>{{video.bulletCommentCount}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-thumbs-up"></i> 推荐数</td>
+            <td>{{video.like}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-bitcoin"></i> 投币数</td>
+            <td>{{video.coin}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-star"></i> 收藏数</td>
+            <td>{{video.star}}</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-share-square"></i> 分享数</td>
+            <td>{{video.share}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="comment-container">
+    <h2>精选评论...</h2>
+    <ul class="comments">
+      {% for comment in video.comments %}
+      <li>{{ comment }}</li>
+      {% empty %}
+      <li><span style="color: gray;">还没有评论哦!</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<link href="{% static 'css/video.css' %}" rel="stylesheet" />
+
+{% endblock main %}

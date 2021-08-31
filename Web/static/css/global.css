@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+
 body {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  display: block;
+  min-height: 100%;
 }
 
 body:before {
@@ -10,7 +11,7 @@ body:before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 20%;
+  opacity: 16%;
 
   position: fixed;
   top: 0;
@@ -25,7 +26,6 @@ body:before {
 
 header {
   height: 12%;
-  background-color: red;
 }
 
 .header-container {
@@ -35,12 +35,66 @@ header {
     align-items: center;
 }
 
-.header-container .icon {
-    border-radius: 100%;
+.header-container a {
     margin: auto 2%;
 }
-.header-container .search-box {
+
+.header-container a .icon {
+    border-radius: 100%;
+}
+
+.header-container .web-title {
+  margin: 0 auto;
+  font-size: 24px;
+  font-family: 'ZCOOL KuaiLe', cursive;
+}
+
+.header-container .grow-bar {
     flex-grow: 1;
+}
+
+.header-container .search-bar {
+  margin-right: 2%;
+  height: 35%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  padding: 0.4rem 1.5rem;
+  background-color: aliceblue;
+  border-radius: 20px;
+}
+
+.header-container .search-bar #sel {
+  background-color: aliceblue;
+  border: none;
+  font-size: 16px;
+  text-align-last: center;
+  padding: 2%;
+}
+
+.header-container .search-bar #sel:focus {
+  outline: none;
+}
+
+.header-container .search-bar #in {
+  margin-right: 1%;
+  padding: 0.2rem 1rem;
+  border: none;
+  background-color: aliceblue;
+  height: 2rem;
+  font-size: 16px;
+}
+
+.header-container .search-bar #in:focus {
+  outline: none;
+}
+
+.header-container .search-bar i {
+  cursor: pointer;
 }
 
 /* Footer */
@@ -55,13 +109,13 @@ footer {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
 .footer-container .copyright {
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 0.3rem;
   font-size: large;
   font-style: italic;
   font-family: Georgia, serif;
@@ -69,17 +123,18 @@ footer {
 
 .footer-container .copyright a{
   text-decoration: none;
+  color: rgb(45, 164, 233);
 }
 
 .footer-container .power {
     margin: 0 auto;
     margin-top: 0.2rem;
     color: gray;
-    font-family: system-ui;
+    font-family:'Times New Roman', Times, serif;
 }
 
 /* main */
 
 main {
-  min-height: 76%;
+  min-height: calc(80vh);
 }
