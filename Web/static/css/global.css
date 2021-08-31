@@ -1,8 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap");
 
 body {
   display: block;
   min-height: 100%;
+  font-size: 16px;
+}
+
+hr {
+  margin: 0.5rem auto;
+  border-top: 1px solid #8f7878;
 }
 
 body:before {
@@ -29,28 +35,28 @@ header {
 }
 
 .header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-container a {
-    margin: auto 2%;
+  margin: auto 2%;
 }
 
 .header-container a .icon {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 
 .header-container .web-title {
   margin: 0 auto;
   font-size: 24px;
-  font-family: 'ZCOOL KuaiLe', cursive;
+  font-family: "ZCOOL KuaiLe", cursive;
 }
 
 .header-container .grow-bar {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .header-container .search-bar {
@@ -121,20 +127,29 @@ footer {
   font-family: Georgia, serif;
 }
 
-.footer-container .copyright a{
+.footer-container .copyright a {
   text-decoration: none;
   color: rgb(45, 164, 233);
 }
 
 .footer-container .power {
-    margin: 0 auto;
-    margin-top: 0.2rem;
-    color: gray;
-    font-family:'Times New Roman', Times, serif;
+  margin: 0 auto;
+  margin-top: 0.2rem;
+  color: gray;
+  font-family: "Times New Roman", Times, serif;
 }
 
 /* main */
 
 main {
   min-height: calc(80vh);
+}
+
+#page-input {
+  font-size: 16px;
+  width: 4rem;
+  height: 2.1rem;
+  border: none;
+  text-align: center;
+  border-bottom: 1px black solid;
 }

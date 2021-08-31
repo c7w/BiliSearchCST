@@ -1,10 +1,128 @@
-{% extends 'Base.html' %}
-{% load static %}
-
-{% block main %}
+{% extends 'Base.html' %} {% load static %} {% block main %}
 <div class="up">
-  
-  
+  <div class="up-info-container">
+    <a style="margin-bottom: 4rem; text-decoration: none" href="/upList"
+      >< 返回UP主列表</a
+    >
+    <a
+      style="margin: 0 auto"
+      target="_blank"
+      href="https://space.bilibili.com/{{up.id}}"
+      ><img
+        src="{{up.avatarUrl}}"
+        width="200"
+        height="200"
+        style="
+          border-radius: 100%;
+          border-width: 1px;
+          border-color: blue;
+          border-style: solid;
+        "
+    /></a>
+    <table style="text-align: center; width: 200px; margin-top: 1rem">
+      <tr>
+        <td colspan="2"><hr /></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="line-height: 1.8rem; font-weight: bold">
+          {{up.username}}
+        </td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-bolt"></i> &nbsp;等级</td>
+        <td>Lv. {{up.level}}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><hr /></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-headphones"></i> 粉丝数</td>
+        <td>{{up.followerCount}}</td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-eye"></i> 关注数</td>
+        <td>{{up.followingCount}}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><hr /></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="line-height: 1.8rem; font-weight: bold">
+          个性签名
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: grey; width: 200px">{{up.signature}}</td>
+      </tr>
+
+      <tr>
+        <td colspan="2"><hr /></td>
+      </tr>
+    </table>
+  </div>
+  <div class="up-container">
+    <div class="placeholder-container"></div>
+    <div class="videos-container">
+      <!-- videos -->
+      {% for video in videos %}
+      <div class="video">
+        <a href="https://www.bilibili.com/video/av{{video.id}}" target="_blank"
+          ><img
+            src="{{video.imageUrl}}"
+            width="200"
+            height="120"
+            style="padding: 0.8rem auto; border-radius: 30px"
+        /></a>
+        <div class="placeholder" style="flex-grow: 1"></div>
+        <div class="intro">
+          <a
+            style="margin: 0 auto; font-weight: bold; text-decoration: none"
+            href="https://www.bilibili.com/video/av{{video.id}}"
+            target="_blank"
+            >{{video.title}}</a
+          >
+          <p style="margin: 0.2rem 0 0.1rem; color: grey">{{video.abstract}}</p>
+        </div>
+      </div>
+      {% empty %}
+      <p
+        style="
+          font-size: 28px;
+          color: gray;
+          font-family: 'Courier New', Courier, monospace;
+        "
+      >
+        没有相应的搜索结果
+      </p>
+      {% endfor %}
+      <!-- pagination -->
+      {% if pagination %}
+      <ul class="pagination">
+        {% for index in pagination.list %} {% if index == 'L' %}
+        <li><a href="{{pagination.baseUrl}}&page=1">&laquo;</a></li>
+        {% elif index == 'R' %}
+        <li>
+          <a href="{{pagination.baseUrl}}&page={{pagination.max}}">&raquo;</a>
+        </li>
+        {% elif index == -1 %}
+        <li><span>···</span></li>
+        {% else %}
+        <li>
+          <a href="{{pagination.baseUrl}}&page={{index}}">{{index}}</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      <ul class="pagination" style="margin: 0;">
+        <li>
+          <span>跳转至 <input type="text" id="page-input" /> 页</span>
+        </li>
+        <li><span onclick="gotoPage('{{pagination.baseUrl}}&page=');" style="cursor: pointer;"><i class="fa fa-arrow-right" style="font-size: 18px"></i></span></li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
 </div>
+
 <link href="{% static 'css/up.css' %}" rel="stylesheet" />
+
 {% endblock main %}

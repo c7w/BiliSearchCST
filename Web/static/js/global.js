@@ -10,5 +10,15 @@ const search = () => {
     } else {
         window.location.href = `/search?type=${type}&keyword=${content}`
     }
+
+}
+
+const gotoPage = (base) => {
+    const page = document.getElementById("page-input").value;
     
+    const pageNum = Number(page);
+    if (!pageNum) {
+        return;
+    }
+    window.location.href = base + pageNum;
 }
