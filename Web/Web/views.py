@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def root(req):
-    return render(req, "VideoList.html")
+    return render(req, "Base.html")

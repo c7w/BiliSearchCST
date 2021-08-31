@@ -65,7 +65,7 @@ if __name__ == "__main__":
             f = open('./CrawlResult/' + name, 'r', encoding='utf-8')
             j = json.load(f)
             s.add(j['authorId'])
-            f.close
+            f.close()
         
         thread = 30
         i = 0
@@ -76,4 +76,24 @@ if __name__ == "__main__":
             f.write('python upInfo.py run ' + str(item) + '\n')
             f.close()
             i += 1
+    if sys.argv[1] == 'check':
+        list_dir = os.listdir('./CrawlResult')
+        for name in list_dir:
+            f = open('./CrawlResult/' + name, 'r', encoding='utf-8')
+            j = json.load(f)
+            if (j['authorId'] == int(sys.argv[2])):
+                print(name)
+            f.close()
+    if sys.argv[1] == 'verify':
+        list_dir = os.listdir('./CrawlResult')
+        author_dir = os.listdir('./UpResult')
+        check_list = []
+        for name in list_dir:
+            f = open('./CrawlResult/' + name, 'r', encoding='utf-8')
+            j = json.load(f)
+            if ( not (str(j['authorId']) + '.json' in author_dir)):
+                check_list.append(name)
+            f.close()
+        print(check_list)
+        print(len(check_list))
         
