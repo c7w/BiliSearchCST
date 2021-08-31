@@ -1,0 +1,30 @@
+{
+    "id": 50007145,
+    "title": "python-几行代码简单海龟绘图",
+    "abstract": "BGM：Ths Tigm",
+    "authorId": 150863508,
+    "uploadTime": 1555817718.0,
+    "playCount": 18017,
+    "commentCount": 31,
+    "bulletCommentCount": 5,
+    "imageUrl": "http://i0.hdslb.com/bfs/archive/bfcbbcde678926bbfd52d5aac658e477d6d1ebc7.jpg",
+    "feedback": {
+        "like": "99",
+        "coin": "21",
+        "star": "261",
+        "share": "45"
+    },
+    "comments": [
+        "成了，代码如下：import turtle as ttfrom random import randinttt.TurtleScreen._RUNNING = Truett.speed(0)tt.bgcolor(black)tt.setpos(-25, 25)tt.colormode(255)cnt = 0while cnt  500:    r = randint(0, 255)    g = randint(0, 255)    b = randint(0, 255)    tt.pencolor(r, g, b)    tt.forward(50 + cnt)    tt.right(91)    cnt += 1tt.done()",
+        "求源代码",
+        "这个库是专门的图像处理库吗?还没学过唉",
+        "black处有单引号，500前面有小于号",
+        "=1"
+    ],
+    "tags": [
+        "科技",
+        "计算机技术",
+        "绘图",
+        "python"
+    ]
+}
