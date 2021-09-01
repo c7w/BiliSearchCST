@@ -67,10 +67,20 @@ def videoList(req):
         videos.append(j)
         f.close()
         g.close()
-    props = {"videos": videos, "page": {"title": "123"}}
+    props = {"videos": [], "page": {"title": "123"}}
     return render(req, 'VideoList.html', props)
 
-
+def upList(req):
+    dir = list(os.listdir("../Crawler/Result/UpResult"))
+    random.shuffle(dir)
+    authors = []
+    for i in dir[0:10]:
+        g = open("../Crawler/Result/UpResult/" + i, 'r', encoding='utf-8')
+        j = json.load(g)
+        authors.append(j)
+    props = {"authors": authors, "page": {"title": "我是标题"}}
+    return render(req, 'upList.html', props)
+        
 def up(req, id):
     videos = [{
         "id": 1005684,
@@ -287,3 +297,8 @@ def up(req, id):
                        "baseUrl": '/up/18008?'}
     }
     return render(req, 'Up.html', props)
+
+def search(req):
+    # TODO
+    return render(req, "404.html")
+    pass

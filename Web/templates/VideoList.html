@@ -5,10 +5,9 @@
     <div class="video-header">
       <a class="back" href="https://www.bilibili.com/">< 返回 Bilibili</a>
       <div style="flex-grow: 1"></div>
-      <a class="front" href="/upList"
-        >前往 UP 主列表 ></a
-      >
+      <a class="front" href="/upList">前往 UP 主列表 ></a>
     </div>
+    <div style="flex-grow: 1"></div>
     <!-- Videos -->
     {% for video in videos %}
     <div class="video">
@@ -85,6 +84,7 @@
     >
       无可用搜索结果
     </p>
+    <div style="flex-grow: 1"></div>
     {% endfor %}
     <!-- Pagination -->
     {% if pagination %}

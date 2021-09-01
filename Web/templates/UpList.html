@@ -1,0 +1,104 @@
+{% extends 'Base.html' %} {% load static %} {% block main %}
+<div class="up-list">
+  <div class="authors-container">
+    <p style="margin-bottom: 2rem">{{page.title}}</p>
+    <div class="author-header">
+      <a class="back" href="/videoList">< 前往视频列表</a>
+      <div style="flex-grow: 1"></div>
+      <a class="front" href="https://www.bilibili.com/">返回 Bilibili ></a>
+    </div>
+    <div style="flex-grow: 1"></div>
+    <!-- authors -->
+    {% for up in authors %}
+    <div class="up">
+      <a style="margin: 0 auto" href="/up/{{up.id}}"
+        ><img
+          src="{{up.avatarUrl}}"
+          width="128"
+          height="128"
+          style="
+            border-radius: 100%;
+            border-width: 1px;
+            border-color: rgb(235, 245, 207);
+            border-style: solid;
+          "
+      /></a>
+      <div class="up-info">
+        <p>
+          <a
+            style="
+              font-size: 18px;
+              font-weight: bold;
+              text-decoration: none;
+              color: rgb(92, 92, 219);
+            "
+            href="/up/{{up.id}}"
+            >{{up.username}}</a
+          >
+        </p>
+        <p style="color: gray">
+            {{up.signature}}
+        </p>
+        <p style="flex-grow: 1"></p>
+        <p style="color: rgb(192, 188, 188); font-size: 12px; margin-bottom: 0">
+          <span
+            ><i class="fa fa-bolt" title="等级"></i> &nbsp;等级 Lv.
+            {{up.level}}</span
+          >
+          <span
+            >&nbsp;&nbsp;<i class="fa fa-headphones" title="粉丝数"></i>
+            &nbsp;粉丝数 {{up.followerCount}}</span
+          >
+          <span
+            >&nbsp;&nbsp;<i class="fa fa-eye" title="关注数"></i> &nbsp;关注数
+            {{up.followingCount}}</span
+          >
+        </p>
+      </div>
+    </div>
+    {% empty %}
+    <p
+      style="
+        font-size: 28px;
+        color: gray;
+        font-family: 'Courier New', Courier, monospace;
+      "
+    >
+      无可用搜索结果
+    </p>
+    <div style="flex-grow: 1"></div>
+    {% endfor %}
+    <!-- pagination -->
+    {% if pagination %}
+    <ul class="pagination">
+      {% for index in pagination.list %} {% if index == 'L' %}
+      <li><a href="{{pagination.baseUrl}}&page=1">&laquo;</a></li>
+      {% elif index == 'R' %}
+      <li>
+        <a href="{{pagination.baseUrl}}&page={{pagination.max}}">&raquo;</a>
+      </li>
+      {% elif index == -1 %}
+      <li><span>···</span></li>
+      {% else %}
+      <li>
+        <a href="{{pagination.baseUrl}}&page={{index}}">{{index}}</a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+    <ul class="pagination" style="margin: 0">
+      <li>
+        <span>跳转至 <input type="text" id="page-input" /> 页</span>
+      </li>
+      <li>
+        <span
+          onclick="gotoPage('{{pagination.baseUrl}}&page=',{{pagination.max}});"
+          style="cursor: pointer"
+          ><i class="fa fa-arrow-right" style="font-size: 18px"></i
+        ></span>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+</div>
+<link href="{% static 'css/uplist.css' %}" rel="stylesheet" />
+{% endblock main %}

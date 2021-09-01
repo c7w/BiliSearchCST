@@ -1,0 +1,13 @@
+{% extends 'Base.html' %} {% load static %} {% block main %}
+<div class="notfound-container">
+  <p style="font-size: 32px; color: grey">404 Not Found</p>
+  <img
+    src="https://i.loli.net/2021/09/01/MWkHN5p6YRvVCJb.jpg"
+    width="480"
+    height="270"
+    style="border-radius: 50px; margin: 4rem auto"
+  />
+  <p style="font-size: 32px; color: grey">QwQ 页面不见啦 QwQ</p>
+</div>
+<link href="{% static 'css/404.css' %}" rel="stylesheet" />
+{% endblock main %}
