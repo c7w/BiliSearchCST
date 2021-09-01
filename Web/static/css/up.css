@@ -19,7 +19,7 @@
 }
 
 .videos-container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 30px;
     width: 60%;
     min-height: calc(64vh);
@@ -37,7 +37,7 @@
     bottom: 12%;
     left: 10%;
     right: 70%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 30px;
     padding: 3%;
     display: flex;

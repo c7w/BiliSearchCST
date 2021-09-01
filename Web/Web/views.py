@@ -67,7 +67,7 @@ def videoList(req):
         videos.append(j)
         f.close()
         g.close()
-    props = {"videos": [], "page": {"title": "123"}}
+    props = {"videos": videos, "page": {"title": "123"}}
     return render(req, 'VideoList.html', props)
 
 def upList(req):

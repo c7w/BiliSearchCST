@@ -66,7 +66,7 @@
       <!-- videos -->
       {% for video in videos %}
       <div class="video">
-        <a href="https://www.bilibili.com/video/av{{video.id}}" target="_blank"
+        <a href="/video/{{video.id}}"
           ><img
             src="{{video.imageUrl}}"
             width="200"
@@ -77,8 +77,7 @@
         <div class="intro">
           <a
             style="margin: 0 auto; font-weight: bold; text-decoration: none"
-            href="https://www.bilibili.com/video/av{{video.id}}"
-            target="_blank"
+            href="/video/{{video.id}}"
             >{{video.title}}</a
           >
           <p style="margin: 0.2rem 0 0.1rem; color: grey; font-size: 12px; margin-top: 1rem;">{{video.abstract}}</p>
