@@ -1,3 +1,4 @@
+from utils import DataProcessor
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from datetime import datetime
@@ -302,3 +303,6 @@ def search(req):
     # TODO
     return render(req, "404.html")
     pass
+
+def mergeData(req):
+    return DataProcessor.MergeData()

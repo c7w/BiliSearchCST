@@ -1,6 +1,7 @@
 from django.conf.urls import include
 from django.urls import path
 from . import views
+from utils import DataProcessor
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('upList/', views.upList),
     path('up/<int:id>', views.up),
     path('search/', views.search),
+    path('merge/', views.mergeData),
 ]

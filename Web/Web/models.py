@@ -8,14 +8,14 @@ class Up(models.Model):
     signature = models.TextField()
     level = models.IntegerField()
     avatarUrl = models.TextField()
-    followerCount = models.IntegerField()
-    followingCount = models.IntegerField()
+    followerCount = models.TextField()
+    followingCount = models.TextField()
 
 class Video(models.Model):
     id = models.IntegerField(primary_key=True)
     title = models.TextField()
     abstract = models.TextField()
-    authorId: models.ImageField()
+    authorId: models.IntegerField()
     author = models.ForeignKey(Up, related_name='videos', on_delete=models.CASCADE)
     uploadTime = models.DateTimeField()
     playCount = models.IntegerField()
@@ -36,11 +36,11 @@ class Comment(models.Model):
         Video, related_name='comments', on_delete=models.CASCADE)
     content = models.TextField()
 
-# Many [Videos] to many [tags]
+# One [Video] to many [tags]
 class Tag(models.Model):
     id = models.BigAutoField(primary_key=True)
-    videos = models.ManyToManyField(
-        Video, related_name='tags')
+    video = models.ForeignKey(
+        Video, related_name='tags', on_delete=models.CASCADE)
     tagName = models.TextField()
 
 
