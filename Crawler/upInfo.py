@@ -46,9 +46,6 @@ def getUp(i):
     driver.get(base_url)
     time.sleep(0.5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    f = open(f"./test.html", 'w+', encoding='utf-8')
-    f.write(str(soup))
-    f.close()
     parseHtml(i, soup)
 
 

@@ -98,18 +98,19 @@
       {% elif index == -1 %}
       <li><span>···</span></li>
       {% else %}
-      <li>
+      <li{% if index == pagination.current %} class="page-item active"{% endif %}>
         <a href="{{pagination.baseUrl}}&page={{index}}">{{index}}</a>
       </li>
       {% endif %} {% endfor %}
     </ul>
     <ul class="pagination" style="margin: 0">
       <li>
-        <span>跳转至 <input type="text" id="page-input" /> 页</span>
+        <span>跳转至 <input type="text" id="page-input" onkeydown="InputKeyPress('pagination', '{{pagination.baseUrl}}&page=', {{pagination.max}});" /> 页</span>
       </li>
       <li>
         <span
           onclick="gotoPage('{{pagination.baseUrl}}&page=',{{pagination.max}});"
+          
           style="cursor: pointer"
           ><i class="fa fa-arrow-right" style="font-size: 18px"></i
         ></span>

@@ -4,6 +4,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.head}} | BiliSearch CST</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
       rel="stylesheet"
@@ -32,8 +34,8 @@
           <option value="video" selected>视频</option>
           <option value="up">UP主</option>
         </select>
-        <input id="in" type="search" placeholder="Search..." />
-        <i class="fa fa-search" onclick="search();"></i>
+        <input id="in" type="search" placeholder="Search..." onkeydown="InputKeyPress('search');" />
+        <i class="fa fa-search" onclick="search();" style="font-size: 20px; margin-right: 1rem;"></i>
       </div>
 
       <a href="https://www.github.com/c7w" target="_blank"

@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import time
-import sys
+import sys, os
 import re
 from selenium import webdriver
 from datetime import datetime
@@ -103,17 +103,63 @@ def getVideo(i):
 
     base_url = 'https://www.bilibili.com/video/av' + str(i)
     driver.get(base_url + "/")
-    time.sleep(4)
+    time.sleep(5)
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     parsePage(i, soup)
     driver.quit()
 
 
 if __name__ == "__main__":
-    #1005680, 1006780
-    
-    for i in range(int(sys.argv[1]), int(sys.argv[2])):
-        print("-----------------------------")
-        print(str(i))
-        getVideo(i)
-        print("-----------------------------")
+    # for i in range(int(sys.argv[1]), int(sys.argv[2])):
+        # print("-----------------------------")
+        # print(str(i))
+        # getVideo(i)
+        # print("-----------------------------")
+    if sys.argv[1] == 'run':
+        getVideo(int(sys.argv[2]))
+        exit(0)
+    if sys.argv[1] == 'generate':
+        # Read from json to the author set
+        s = []
+        src = os.listdir('./Result/CrawlResult')
+        dest = os.listdir('./CrawlResult')
+        check_list = []
+        for name in src:
+            if ( not (name in dest)):
+                check_list.append(name)
+        print(check_list)
+        
+        thread = 5
+        i = 0
+        for item in check_list:
+            f = open('./Bash/' + str(i%thread) + '.bat', 'a+', encoding='utf-8')
+            if i < thread:
+                f.write('cd E:\Project\Homework\python\Crawler\n')
+            f.write('python videoInfo.py run ' + str(item[:-5]) + '\n')
+            f.close()
+            i += 1
+    if sys.argv[1] == 'verify':
+        s = []
+        src = os.listdir('./Result/CrawlResult')
+        dest = os.listdir('./CrawlResult')
+        check_list = []
+        for name in src:
+            if ( not (name in dest)):
+                check_list.append(name)
+        print(check_list)
+        print(len(check_list))
+    if sys.argv[1] == 'checkAuthor':
+        s = set()
+        result = os.listdir('./CrawlResult')
+        for fileName in result:
+            f = open('./CrawlResult/'+fileName, 'r', encoding='utf-8')
+            j = json.load(f)
+            f.close()
+            s.add(j['authorId'])
+        l = list(s)
+        ori_author = os.listdir("./Result/UpResult")
+        del_author_list = []
+        for authorName in ori_author:
+            if not (int(authorName[:-5]) in l):
+                del_author_list.append(authorName)
+        print(del_author_list)
