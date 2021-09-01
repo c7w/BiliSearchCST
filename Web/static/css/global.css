@@ -17,7 +17,7 @@ body:before {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 20%;
+  opacity: 16%;
 
   position: fixed;
   top: 0;
@@ -152,4 +152,8 @@ main {
   border: none;
   text-align: center;
   border-bottom: 1px black solid;
+}
+
+td {
+  padding: 0.3rem;
 }

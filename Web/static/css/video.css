@@ -20,7 +20,7 @@
 
 .video-container {
   width: 75%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(243, 243, 226, 0.7);
   border-radius: 30px;
   padding: 2%;
   display: flex;
@@ -38,7 +38,7 @@
 }
 
 .up-container {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(243, 243, 226, 0.7);
   height: 50%;
   border-radius: 30px;
   padding: 10% 5%;
@@ -49,7 +49,7 @@
 }
 
 .feedback-container {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(243, 243, 226, 0.7);
   height: 45%;
   border-radius: 30px;
   padding: 10% 5%;
@@ -65,7 +65,7 @@
   width: 60%;
   min-height: calc(15vh);
   border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(243, 243, 226, 0.7);
 }
 
 .video-header {
@@ -97,10 +97,11 @@
   font-size: 15px;
   text-align: left;
   color: gray;
-}
-
-td {
-  padding: 0 0.8rem;
+  width: 75%;
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 30px;
+  padding: 3%;
 }
 
 .comment-container .comments li {

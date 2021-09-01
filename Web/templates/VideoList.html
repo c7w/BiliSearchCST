@@ -21,7 +21,7 @@
       <div class="video-info">
         <a
           href="/video/{{video.id}}"
-          style="text-decoration: none; margin-bottom: 1.5rem"
+          style="text-decoration: none; margin-bottom: 1.5rem; font-size: 18px; font-weight: bold;"
           >{{video.title}}</a
         >
         <p style="color: grey">{{video.shortAbstract}}</p>
@@ -84,7 +84,7 @@
     >
       无可用搜索结果
     </p>
-    <div style="flex-grow: 1"></div>
+    
     {% endfor %}
     <!-- Pagination -->
     {% if pagination %}
@@ -116,6 +116,7 @@
       </li>
     </ul>
     {% endif %}
+    <div style="flex-grow: 1"></div>
   </div>
 </div>
 <link href="{% static 'css/videolist.css' %}" rel="stylesheet" />
