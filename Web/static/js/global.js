@@ -13,11 +13,12 @@ const search = () => {
 
 }
 
-const gotoPage = (base) => {
+const gotoPage = (base, maxV) => {
     const page = document.getElementById("page-input").value;
-    
+
     const pageNum = Number(page);
-    if (!pageNum) {
+    if (!pageNum || pageNum > maxV || pageNum < 1) {
+        alert('请输入正确的页码范围!');
         return;
     }
     window.location.href = base + pageNum;

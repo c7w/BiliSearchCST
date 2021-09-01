@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from datetime import datetime
+import os, random, json
 
 # Create your views here.
 
@@ -47,7 +48,26 @@ def video(req, id):
 
 
 def videoList(req):
-    props = {}
+    dir = list(os.listdir("../Crawler/Result/CrawlResult"))
+    random.shuffle(dir)
+    videos = []
+    for i in dir[0:10]:
+        f = open("../Crawler/Result/CrawlResult/" + i, 'r', encoding='utf-8')
+        j = json.load(f)
+        g = open("../Crawler/Result/UpResult/" +
+                 str(j['authorId']) + '.json', 'r', encoding='utf-8')
+        j['author'] = json.load(g)
+        j['star'] = j['feedback']['star']
+        if (len(j['abstract']) > 75):
+            j['shortAbstract'] = j['abstract'][0:75] + "..."
+        else:
+            j['shortAbstract'] = j['abstract']
+        j['uploadTime'] = datetime.fromtimestamp(
+            j['uploadTime']).strftime('%Y-%m-%d %H:%M:%S')
+        videos.append(j)
+        f.close()
+        g.close()
+    props = {"videos": videos, "page": {"title": "123"}}
     return render(req, 'VideoList.html', props)
 
 
