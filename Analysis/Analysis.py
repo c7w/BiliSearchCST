@@ -41,6 +41,7 @@ def Conclusion1():
 
     # Calc average time for each uniqueId
     idUnique = np.unique(idRepresent)
+    # print(idUnique)
     for tid in idUnique:
         mask = (idRepresent == tid)
         averageTime = np.dot(mask, timeList) // mask.sum()
